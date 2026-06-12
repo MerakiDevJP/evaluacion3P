@@ -1,16 +1,16 @@
 <div class="form-container">
   <h2>Registrar Visita</h2>
-  <form>
+  <form (ngSubmit)="registrar()" #visitaForm="ngForm">
     <div class="form-group">
-      <label for="name">Nombre del visitante</label>
-      <input type="text" id="name" name="name" placeholder="Ingresa tu nombre" required>
+      <label for="nombre">Nombre del visitante</label>
+      <input type="text" id="nombre" name="nombre" [(ngModel)]="visita.nombre" placeholder="Ingresa tu nombre" required>
     </div>
     
     <div class="form-group">
-      <label for="reason">Motivo de la visita</label>
-      <textarea id="reason" name="reason" placeholder="¿Cuál es el motivo de tu visita?" rows="4" required></textarea>
+      <label for="motivo">Motivo de la visita</label>
+      <textarea id="motivo" name="motivo" [(ngModel)]="visita.motivo" placeholder="¿Cuál es el motivo de tu visita?" rows="4" required></textarea>
     </div>
 
-    <button type="submit" class="submit-btn">Registrar</button>
+    <button type="submit" class="submit-btn" [disabled]="!visitaForm.form.valid">Registrar</button>
   </form>
 </div>
