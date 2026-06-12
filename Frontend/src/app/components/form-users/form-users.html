@@ -1,16 +1,30 @@
 <div class="form-container">
   <h2>Registrar Visita</h2>
+
+  @if (mensajeExito()) {
+  <div class="alerta-exito">
+    ✅ {{ mensajeExito() }}
+  </div>
+  }
+
+  @if (mensajeError()) {
+  <div class="alerta-error">
+    {{ mensajeError() }}
+  </div>
+  }
+
   <form (ngSubmit)="registrar()" #visitaForm="ngForm">
     <div class="form-group">
       <label for="nombre">Nombre del visitante</label>
       <input type="text" id="nombre" name="nombre" [(ngModel)]="visita.nombre" placeholder="Ingresa tu nombre" required>
     </div>
-    
+
     <div class="form-group">
       <label for="motivo">Motivo de la visita</label>
-      <textarea id="motivo" name="motivo" [(ngModel)]="visita.motivo" placeholder="¿Cuál es el motivo de tu visita?" rows="4" required></textarea>
+      <textarea id="motivo" name="motivo" [(ngModel)]="visita.motivo" placeholder="¿Cuál es el motivo de tu visita?"
+        rows="4" required></textarea>
     </div>
 
-    <button type="submit" class="submit-btn" [disabled]="!visitaForm.form.valid">Registrar</button>
+    <button type="submit" class="submit-btn">Registrar</button>
   </form>
 </div>
